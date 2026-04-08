@@ -1,10 +1,10 @@
-#Biodiversity Predictor Using 
+# Sentinel Biodiversity Modeling 
 
-##Data
+## Data
 The data used to train the model are downloaded from EarthEngine and use the Biodiversity Intactness Index. Include info about the BII and the proper citation here. https://gee-community-catalog.org/projects/bii/
 Coordinates for the bounding box for Santa Barbara County are from the 2019 TIGER/Line Shapefile published by the US Census Bureau here https://catalog.data.gov/dataset/tiger-line-shapefile-2019-county-santa-barbara-county-ca-topological-faces-polygons-with-all-ge
 
-##Repository Structure
+## Repository Structure
 ├── README.md
 ├── data/
 │   └── sentinel_bii_download.js
@@ -17,7 +17,7 @@ Coordinates for the bounding box for Santa Barbara County are from the 2019 TIGE
 ├── requirements.txt
 └── config.yaml
 
-##How to Run the Project
+## How to Run the Project
 1. Download the Data from EarthEngine:
 	1. Create an EarthEngine Project.
 	2. Create a new script in the project and run the code from data/sentinel_bii_download.js.
