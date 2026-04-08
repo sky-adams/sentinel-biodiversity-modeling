@@ -1,0 +1,27 @@
+data:
+  tif_path: data/santa_barbara_sentinel_bii.tif
+  patch_size: 64
+  stride: 64
+  bands: [0, 1, 2, 3]
+  label_band: 4
+  train_frac: 0.70
+  val_frac: 0.15
+  test_frac: 0.15
+  random_seed: 42
+  min_label_coverage: 0.80
+
+model:
+  in_channels: 4
+  base_channels: 32
+  dropout: 0.20
+
+auto_lr:
+  lr: 0.0003
+
+train:
+  batch_size: 32
+  epochs: 30
+  weight_decay: 0.0001
+  num_workers: 0
+  patience: 5
+  save_dir: outputs
