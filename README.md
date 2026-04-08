@@ -13,6 +13,9 @@ The GeoTIFF file contains 5 bands:
 The pipeline uses bands 1–4 as inputs and band 5 as the regression target.
 
 ## Repository Structure
+
+```text
+.
 ├── README.md
 ├── data/
 │   └── sentinel_bii_download.js
@@ -24,6 +27,7 @@ The pipeline uses bands 1–4 as inputs and band 5 as the regression target.
 │   └── train.py
 ├── requirements.txt
 └── config.yaml
+```
 
 ## How to Run the Project
 1. Download the Data from EarthEngine:
