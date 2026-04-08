@@ -3,6 +3,14 @@
 ## Data
 The data used to train the model are downloaded from EarthEngine and use the Biodiversity Intactness Index. Include info about the BII and the proper citation here. https://gee-community-catalog.org/projects/bii/
 Coordinates for the bounding box for Santa Barbara County are from the 2019 TIGER/Line Shapefile published by the US Census Bureau here https://catalog.data.gov/dataset/tiger-line-shapefile-2019-county-santa-barbara-county-ca-topological-faces-polygons-with-all-ge
+The GeoTIFF file contains 5 bands:
+1. B2 = blue
+2. B3 = green
+3. B4 = red
+4. B8 = near-infrared
+5. bii_label = the Biodiversity Intactness Index
+
+The pipeline uses bands 1–4 as inputs and band 5 as the regression target.
 
 ## Repository Structure
 ├── README.md
