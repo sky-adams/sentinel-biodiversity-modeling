@@ -1,6 +1,7 @@
 from pathlib import Path
 import json
-
+import os
+import random
 import numpy as np
 import torch
 from torch.utils.data import DataLoader, Subset
@@ -108,7 +109,22 @@ def evaluate(model, loader, device):
     return masked_metrics(targets, preds), targets, preds
 
 
+def set_seed(seed=42):
+    os.environ["PYTHONHASHSEED"] = str(seed)
+    random.seed(seed)
+    np.random.seed(seed)
+    torch.manual_seed(seed)
+
+    if torch.cuda.is_available():
+        torch.cuda.manual_seed(seed)
+        torch.cuda.manual_seed_all(seed)
+
+    torch.backends.cudnn.deterministic = True
+    torch.backends.cudnn.benchmark = False
+
+
 def main():
+    set_seed(42)
     config = {
         "tif_path": "data/santa_barbara_sentinel_bii.tif",
         "patch_size": 64,
@@ -161,7 +177,7 @@ def main():
 
     sample = ds[0]
     while sample is None:
-        sample = ds[np.random.randint(0, len(ds))]
+        sample = ds[rng.integers(0, len(ds))]
     sample_x, _ = sample
     model = BIIRegressor(in_channels=sample_x.shape[0]).to(device)
 
