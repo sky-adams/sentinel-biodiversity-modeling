@@ -228,8 +228,11 @@ def main():
         y1=df["actual"].max(),
         line=dict(dash="dash", color="red"),
     )
-    fig.write_image(str(out / "pred_vs_actual.png"))
-
+    
+    try:
+        fig.write_image(str(out / "pred_vs_actual.png"))
+    except Exception as e:
+        print(e)
     print(test_metrics)
 
 
