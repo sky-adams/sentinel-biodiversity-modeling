@@ -3,7 +3,7 @@ import torch.nn as nn
 
 
 class BIIRegressor(nn.Module):
-    def __init__(self, in_channels=4, base_channels=32, dropout=0.2):
+    def __init__(self, in_channels=4, base_channels=32, dropout=0.3):
         super().__init__()
         self.features = nn.Sequential(
             nn.Conv2d(in_channels, base_channels, kernel_size=3, padding=1),
