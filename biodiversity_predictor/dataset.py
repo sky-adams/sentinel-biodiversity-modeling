@@ -71,8 +71,26 @@ class SentinelBIITileDataset(Dataset):
         # B4 = red
         # B8 = near-infrared
         # bii_label = the target band
-        x = arr[:4]
         y_band = arr[4]
+        b2 = arr[0]
+        b3 = arr[1]
+        b4 = arr[2]
+        b8 = arr[3]
+
+        def safe_div(numer, denom):
+            out = np.full_like(numer, np.nan, dtype=np.float32)
+            mask = np.isfinite(numer) & np.isfinite(denom) & (denom != 0)
+            out[mask] = numer[mask] / denom[mask]
+            return out
+
+        ndvi = safe_div(b8 - b4, b8 + b4)
+        gndvi = safe_div(b8 - b3, b8 + b3)
+
+        msavi2_term = (2 * b8 + 1) ** 2 - 8 * (b8 - b4)
+        msavi2_term = np.maximum(msavi2_term, 0)
+        msavi2 = 0.5 * (2 * b8 + 1 - np.sqrt(msavi2_term))
+        
+        x = np.stack([b2, b3, b4, b8, ndvi, gndvi, msavi2], axis=0).astype(np.float32)
 
         if np.isnan(x).any():
             band_means = np.nanmean(x, axis=(1, 2), keepdims=True)
