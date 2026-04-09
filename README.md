@@ -20,7 +20,7 @@ The pipeline uses bands 1–4 as inputs and band 5 as the regression target.
 ├── data/
 │   └── sentinel_bii_download.js
 │   └── santa_barbara_sentinel_bii.tif
-├── src/
+├── biodiversity_predictor/
 │   ├── __init__.py
 │   ├── dataset.py
 │   ├── model.py
@@ -37,4 +37,4 @@ The pipeline uses bands 1–4 as inputs and band 5 as the regression target.
 	4. Download and save the GeoTIFF file into the data folder of this project.
 2. Run the Code
 	1. Install the required Python modules using pip install -r requirements.txt.
-	2. 
+	2. Run the Python code from the project root using `python -m biodiversity_predictor.train`.
